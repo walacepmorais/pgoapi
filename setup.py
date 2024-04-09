@@ -11,7 +11,10 @@ setup_dir = os.path.dirname(os.path.realpath(__file__))
 path_req = os.path.join(setup_dir, 'requirements.txt')
 install_reqs = parse_requirements(path_req, session=False)
 
-reqs = [str(ir.req) for ir in install_reqs]
+try:
+    reqs = [str(ir.req) for ir in install_reqs]
+except:
+    reqs = [str(ir.requirement) for ir in install_reqs]
 
 setup(name='pgoapi',
       author = 'tjado',
